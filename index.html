@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* CSS for styling the text and image container */
+        #content-container {
+            text-align: center;
+            position: relative;
+            height: 100vh; /* Make the container fill the viewport height */
+        }
+
+        /* CSS for styling the button */
+        #birthday-button {
+            font-size: 18px;
+            padding: 12px 24px;
+            background-color: #FF5722; /* Orange background color */
+            color: #FFF; /* White text color */
+            border: none;
+            border-radius: 8px; /* Rounded corners */
+            cursor: pointer;
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow */
+            transition: background-color 0.3s ease; /* Smooth color transition */
+        }
+
+        /* Hover effect for the button */
+        #birthday-button:hover {
+            background-color: #FF8A65; /* Lighter orange on hover */
+        }
+
+        /* CSS for styling the blinking h1 text */
+        #birthday-text {
+            font-size: 36px;
+            font-weight: bold;
+            color: #FF5722; /* Orange color */
+            display: none;
+            animation: blink 1s linear infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* CSS for styling the random quote text */
+        #quote {
+            text-align: center;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+
+        /* CSS for styling the quotes as h3 */
+        h3 {
+            font-size: 18px;
+            color: #333; /* Dark gray text color */
+        }
+    </style>
+    <script>
+        function displayBirthday() {
+            var birthdayButton = document.getElementById("birthday-button");
+            var birthdayText = document.getElementById("birthday-text");
+            var birthdayGIF = document.getElementById("birthday-gif");
+            var quote = document.getElementById("quote");
+
+            birthdayButton.style.display = "none"; // Hide the "Happy Birthday" button
+            birthdayText.style.display = "block";
+            birthdayGIF.style.display = "block";
+            quote.style.display = "block";
+
+            // Replace this with an array of birthday quotes
+            var quotes = [
+                "May your day be filled with joy and laughter!",
+                "Wishing you a year full of happiness and success.",
+                "Another year older, but wiser and better!",
+                "Here's to another year of amazing adventures!",
+                "May your birthday be as special as you are!",
+            ];
+
+            // Get a random quote from the array
+            var randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+            // Create an <h3> element for the quote
+            var h3 = document.createElement("h3");
+            h3.textContent = randomQuote;
+            quote.appendChild(h3);
+        }
+    </script>
+</head>
+<body>
+    <div id="content-container">
+        <button id="birthday-button" onclick="displayBirthday()">Click to Celebrate</button>
+        <h1 id="birthday-text" style="display: none;">Happy Birthday!</h1>
+        <img id="birthday-gif" style="display: none;" src="https://media.tenor.com/1Z7EJnXM8c8AAAAC/happy-birthday.gif" alt="Birthday GIF">
+        <div id="quote" style="display: none;"></div>
+    </div>
+</body>
+</html>
