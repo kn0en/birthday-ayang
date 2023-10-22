@@ -59,6 +59,54 @@
             font-size: 18px;
             color: #333; /* Dark gray text color */
         }
+
+        /* CSS for the balloon animation */
+        @keyframes balloon-rise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200vh);
+                opacity: 0;
+            }
+        }
+
+        /* Random balloon colors */
+        .balloon {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            border-radius: 50%;
+            animation: balloon-rise 5s linear infinite;
+        }
+
+        .balloon:nth-child(odd) {
+            background-color: #FF5722; /* Orange */
+        }
+
+        .balloon:nth-child(even) {
+            background-color: #4CAF50; /* Green */
+        }
+
+        /* CSS for styling birthday trumpets */
+        .trumpet {
+            width: 50px;
+            height: 100px;
+            position: absolute;
+        }
+
+        .trumpet.left {
+            left: 10%;
+            bottom: -100px; /* Position below the page */
+        }
+
+        .trumpet.right {
+            right: 10%;
+            bottom: -100px; /* Position below the page */
+            transform: scaleX(-1); /* Flip horizontally */
+        }
+
     </style>
     <script>
         function displayBirthday() {
@@ -107,6 +155,20 @@
         <h1 id="birthday-text" style="display: none;">Happy Birthday! Sayangku Cica 💕😘</h1>
         <img id="birthday-gif" style="display: none;" src="https://media.tenor.com/1Z7EJnXM8c8AAAAC/happy-birthday.gif" alt="Birthday GIF">
         <div id="quote" style="display: none;"></div>
+
+        <!-- Balloons -->
+        <script>
+            for (var i = 0; i < 15; i++) {
+                var balloon = document.createElement("div");
+                balloon.className = "balloon";
+                balloon.style.left = (Math.random() * 100) + "%";
+                document.getElementById("content-container").appendChild(balloon);
+            }
+        </script>
     </div>
 </body>
+
+<!-- Birthday Trumpets -->
+<img class="trumpet left" src="https://media.tenor.com/T8BBztMPNqcAAAAi/meute-muete.gif" alt="Left Trumpet">
+<img class="trumpet right" src="https://media.tenor.com/T8BBztMPNqcAAAAi/meute-muete.gif" alt="Right Trumpet">
 </html>
